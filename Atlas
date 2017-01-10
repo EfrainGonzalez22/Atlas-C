@@ -91,8 +91,9 @@ void Deploy1() //This will shake the bot to drop the fork.
 }
 
 
-void Deploy2 () // This will just slightly shake the bot so the fork will fall to the floor, Theoretically it shouldn't need 
-		// too much to drop it 
+void Deploy2 ()
+   /* This will just slightly shake the bot so the fork will fall to the floor, Theoretically it houldn't need 
+		*/ too much to drop it 
 {
 	startMotor(LeftRear,-SPEED);
 	startMotor(RightRear,-SPEED);
@@ -210,7 +211,15 @@ void HighHang ()// THE BICEP CURL
 		dropLiftFullSpeed();
 	}
 }
+/* Alright time for the real time, this is most important part of this robot if you, Dave or Daniel
 
+, decide to put anything in the skills section make sure you use the whole 1 minute of it.
+And be sure to reference your voids that were in the auton sections and to do that is easy
+
+Just type your name then follow up with a "();" and it should be ready for your program.
+GOOD LUCK. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 void skills()// Please make this as accurate as possible and don't touch it if you aren't Efrain.
 {
 	Deploy();
