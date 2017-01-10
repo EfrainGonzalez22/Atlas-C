@@ -3,14 +3,16 @@
 #pragma config(Sensor, I2C_2,  ,               sensorQuadEncoderOnI2CPort,    , AutoAssign )
 #pragma config(Sensor, I2C_3,  ,               sensorQuadEncoderOnI2CPort,    , AutoAssign )
 #pragma config(Sensor, I2C_4,  ,               sensorQuadEncoderOnI2CPort,    , AutoAssign )
-#pragma config(Motor,  port1,           Claw1,         tmotorVex393_HBridge, openLoop)
+#pragma config(Motor,  port1,           BackLift1,     tmotorVex393_HBridge, openLoop)
 #pragma config(Motor,  port2,           LeftRear,      tmotorVex393HighSpeed_MC29, openLoop, driveLeft, encoderPort, I2C_1)
 #pragma config(Motor,  port3,           RightRear,     tmotorVex393HighSpeed_MC29, openLoop, driveRight, encoderPort, I2C_2)
 #pragma config(Motor,  port4,           RightFront,    tmotorVex393HighSpeed_MC29, openLoop, driveRight, encoderPort, I2C_3)
 #pragma config(Motor,  port5,           LeftFront,     tmotorVex393HighSpeed_MC29, openLoop, driveLeft, encoderPort, I2C_4)
 #pragma config(Motor,  port6,           LeftLifts,     tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port7,           RightLifts,    tmotorVex393_MC29, openLoop)
-#pragma config(Motor,  port10,          Claw2,         tmotorVex393_HBridge, openLoop)
+#pragma config(Motor,  port8,           Claw1, 	       tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port9,           Claw2,         tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port10,          BackLift2,     tmotorVex393_HBridge, openLoop)
 
 
 #pragma platform(VEX2)
@@ -26,15 +28,15 @@
 
   int FULL = 127; 	// Please only use this for the lifts.
   int HALF = 64;  	// Only necessary for testing speeds.
-  int TILE = 500;   // Theoretically accurate.
+  int TILE = 500;   	// Theoretically accurate.
   int CONTROL = 5;	// Use this to maintain the lift.
-  int LEFT = (Ch3); // These two settings are
-  int RIGHT = (Ch2);// for the controllers.
-  int SPEED = 100;  // The Theoretically proper speed for the four wheels. IDK IDK IDK IDK maybe
+  int LEFT = (Ch3); 	// These two settings are
+  int RIGHT = (Ch2);	// for the controllers.
+  int SPEED = 100;  	// The Theoretically proper speed for the four wheels. IDK IDK IDK IDK maybe
 
                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////  // If you changed or added anything other than Values (for example motor ports, adding int values, changing IMEs, etc.
-  // MAJOR CHANGES //	 // Then this would go here and please be sure to add it so nobody, Me(Efrain), gets confused
+  // MAJOR CHANGES //  // Then this would go here and please be sure to add it so nobody, Me(Efrain), gets confused
   ///////////////////  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /* 1/9/17 6:00am
   Efrain: I changed the motors and sensors setup to have two lift motor controls instead of the usual four.
@@ -47,9 +49,9 @@
   1/9/17 7:00am
   Efrain: Instead of having so much garbage in the user control I changed the motors into a void to keep it clean.
   
-  1/10/17 8:30
+  1/10/17 8:30am
   Efrain: I have fixed the robot to not have to use so much for the "Deploy()". That was due to me changing the intake 
-  to the claw and haveing a small fork to fit in constraints. 
+  to the claw and haveing a small fork to fit in constraints. I have also made a second deploy command for a back-up. 
 
 
   */
@@ -74,7 +76,7 @@ void beep()
 //---------------//
 ///////////////////
 
-void Deploy() //This will shake the bot to drop the fork.
+void Deploy1() //This will shake the bot to drop the fork.
 							//It would most likely be used all the time.
 {
 	startMotor(LeftRear,-SPEED);
@@ -87,6 +89,20 @@ void Deploy() //This will shake the bot to drop the fork.
 	stopMotor(LeftLifts);
 	stopMotor(RightLifts);
 }
+
+
+void Deploy2 () // This will just slightly shake the bot so the fork will fall to the floor, Theoretically it shouldn't need 
+		// too much to drop it 
+{
+	startMotor(LeftRear,-SPEED);
+	startMotor(RightRear,-SPEED);
+	wait(0.3);
+	stopMotor(LeftRear);
+	stopMotor(RightRear);
+
+}
+
+
 void LiftAll()// Activate the lift to full power... if you couldn't tell.
 {
 		startMotor(LeftLifts,FULL);
