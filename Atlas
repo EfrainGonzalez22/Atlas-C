@@ -1,0 +1,250 @@
+#pragma config(I2C_Usage, I2C1, i2cSensors)
+#pragma config(Sensor, I2C_1,  ,               sensorQuadEncoderOnI2CPort,    , AutoAssign )
+#pragma config(Sensor, I2C_2,  ,               sensorQuadEncoderOnI2CPort,    , AutoAssign )
+#pragma config(Sensor, I2C_3,  ,               sensorQuadEncoderOnI2CPort,    , AutoAssign )
+#pragma config(Sensor, I2C_4,  ,               sensorQuadEncoderOnI2CPort,    , AutoAssign )
+#pragma config(Motor,  port1,           Claw1,         tmotorVex393_HBridge, openLoop)
+#pragma config(Motor,  port2,           LeftRear,      tmotorVex393HighSpeed_MC29, openLoop, driveLeft, encoderPort, I2C_1)
+#pragma config(Motor,  port3,           RightRear,     tmotorVex393HighSpeed_MC29, openLoop, driveRight, encoderPort, I2C_2)
+#pragma config(Motor,  port4,           RightFront,    tmotorVex393HighSpeed_MC29, openLoop, driveRight, encoderPort, I2C_3)
+#pragma config(Motor,  port5,           LeftFront,     tmotorVex393HighSpeed_MC29, openLoop, driveLeft, encoderPort, I2C_4)
+#pragma config(Motor,  port6,           LeftLifts,     tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port7,           RightLifts,    tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port10,          Claw2,         tmotorVex393_HBridge, openLoop)
+
+
+#pragma platform(VEX2)
+#pragma competitionControl(Competition)
+#include "Vex_Competition_Includes.c"
+
+
+
+
+
+// Set Value for words and phrases to use later
+// Try not to change any values and if there are any specific ones add them using:// int [Name] = Value; //
+
+  int FULL = 127; 	// Please only use this for the lifts.
+  int HALF = 64;  	// Only necessary for testing speeds.
+  int TILE = 500;   // Theoretically accurate.
+  int CONTROL = 5;	// Use this to maintain the lift.
+  int LEFT = (Ch3); // These two settings are
+  int RIGHT = (Ch2);// for the controllers.
+  int SPEED = 100;  // The Theoretically proper speed for the four wheels. IDK IDK IDK IDK maybe
+
+                       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////  // If you changed or added anything other than Values (for example motor ports, adding int values, changing IMEs, etc.
+  // MAJOR CHANGES //	 // Then this would go here and please be sure to add it so nobody, Me(Efrain), gets confused
+  ///////////////////  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /* 1/9/17 6:00am
+  Efrain: I changed the motors and sensors setup to have two lift motor controls instead of the usual four.
+  so the lifts are powered by four motors but are in only two ports to provide room for the back lift and reach
+  the 12 motor limit no problem.
+
+  1/9/17 6:35am
+  Efrain: I added autonomous voids for my other fellow programmers
+
+  1/9/17 7:00am
+  Efrain: Instead of having so much garbage in the user control I changed the motors into a void to keep it clean.
+  
+  1/10/17 8:30
+  Efrain: I have fixed the robot to not have to use so much for the "Deploy()". That was due to me changing the intake 
+  to the claw and haveing a small fork to fit in constraints. 
+
+
+  */
+void pre_auton()
+{
+  bStopTasksBetweenModes = true; //This is necessary
+}
+
+//This section is for the Vex speaker module so only me(Efrain) and Jan can use it.
+//Add Bool to use the right sounds an only once, also please don't use while loops if possible.
+void beep()
+{
+	bPlaySounds = true;
+
+	playSound(soundBeepBeep);
+
+}
+///////////////////
+//---------------//
+//  Autononmous  //
+//  Functions    //
+//---------------//
+///////////////////
+
+void Deploy() //This will shake the bot to drop the fork.
+							//It would most likely be used all the time.
+{
+	startMotor(LeftRear,-SPEED);
+	startMotor(RightRear,-SPEED);
+	startMotor(LeftLifts,FULL);
+	startMotor(RightLifts,FULL);
+	wait(0.5);
+	stopMotor(LeftRear);
+	stopMotor(RightRear);
+	stopMotor(LeftLifts);
+	stopMotor(RightLifts);
+}
+void LiftAll()// Activate the lift to full power... if you couldn't tell.
+{
+		startMotor(LeftLifts,FULL);
+		startMotor(RightLifts,FULL);
+
+}
+
+void stopLift()// Stops the lift from lifting in any way... again if you couldn't already tell.
+{
+        stopMotor(LeftLifts);
+		stopMotor(RightLifts);
+
+}
+void dropLiftFullSpeed()// Will drop the lift at full negative speed down.
+{
+		startMotor(LeftLifts,-FULL);
+		startMotor(RightLifts,-FULL);
+}
+///////////////////////////
+//UNOFFICIAL  AUTONOMOUS'//
+//Write your autons here.//
+///////////////////////////
+
+
+/*----------------------------------------------------------------------------------------------------------------------------------------//
+// TEAM AUTONS																																																														//
+// Also I am very sorry I took control of all the porgramming this entire year but I really believe you all have untapped potential				//
+// so please program as you see fit. I really want to include you guys on the team Thank you for everything.															//
+// P.S If you don't know how to use the voids I made then ignore them they are basically just folders in the programming you can always		//
+// refer to. 																																																															//
+//																																																																				//
+//----------------------------------------------------------------------------------------------------------------------------------------*/
+void DonR() //1st auton. UNTESTED// by non-other than Efrain
+{
+
+}
+
+// I really want you to make a sexy auton I believe in you bb.
+// POINTS SCORED:
+//
+void Dave()
+{
+
+}
+
+
+// Daniel this should be your auton if you choose to make one I'll leave this here until the end of my life.
+// This should be kickass or I will be DISAPPOINTED!!!!!!... I believe in you *Squeak*
+// POINTS SCORED:
+//
+void Daniel()
+{
+
+}
+
+void Ocean_Man()// I dunno man just don't use it, its a secret weapon i swear
+{
+
+}
+// I still believe you can be a great programmer since the beginning
+// POINTS SCORED:
+//
+void Michelle()//OMG I made Michelle her own auton section!
+{
+
+}
+
+
+///////////////////
+//---------------//
+// User Function //
+//---------------//
+///////////////////
+
+void LiftUp ()
+{
+	  motor[LeftLifts] = FULL;
+		motor[RightLifts] = FULL;
+
+}
+
+void LiftDown ()
+{
+		motor[LeftLifts] = -FULL;
+		motor[RightLifts] = -FULL;
+
+}
+
+
+/*************************************/
+///////////////////////////////////////
+//----------HYBRID FUNCTIONS---------//
+// These void values will go in both //
+// auton and the driver control. pls //
+// don't get too crazy.              //
+///////////////////////////////////////
+/*************************************/
+void HighHang ()// THE BICEP CURL
+{
+	if(vexRT[Btn8U] ==1)
+	{
+		LiftAll();
+		wait(1.5);
+		stopLift();
+		dropLiftFullSpeed();
+	}
+}
+
+void skills()// Please make this as accurate as possible and don't touch it if you aren't Efrain.
+{
+	Deploy();
+
+}
+
+
+task autonomous()// Efrain is open to suggestions it really helps me please.
+{
+  Deploy();
+
+  AutonomousCodePlaceholderForTesting();
+}
+
+
+//This is where we begin driver control
+task usercontrol()
+{
+
+
+  while (true)
+  {
+
+  	{
+   motor[LeftRear] = vexRT(LEFT);
+   motor[LeftFront] = vexRT(LEFT);
+   motor[RightRear] = vexRT(RIGHT);
+   motor[RightFront] = vexRT(RIGHT);
+   }
+   if(vexRT[Btn6U] ==1)
+	{
+		LiftUp();
+	}
+	else if(vexRT[Btn6D] ==1)
+	{
+		LiftDown();
+	}
+	else
+	{
+		motor[LeftLifts] = CONTROL;
+		motor[RightLifts] = CONTROL;
+
+	}
+
+	HighHang();
+
+
+
+
+
+  }
+
+}
