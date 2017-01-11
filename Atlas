@@ -133,9 +133,75 @@ void dropLiftFullSpeed()// Will drop the lift at full negative speed down.
 // Also I am very sorry I took control of all the porgramming this entire year but I really believe you all have untapped potential				//
 // so please program as you see fit. I really want to include you guys on the team Thank you for everything.															//
 // P.S If you don't know how to use the voids I made then ignore them they are basically just folders in the programming you can always		//
-// refer to. 																																																															//
-//																																																																				//
+// refer to. 	
+//
+//
+//	Here is a sample auton you can always refer to if your a little lost. It's very basic. I just learned how to make it not basic.
+//
+//	//Begin Auton.
+//    startMotor(RightWheel,110);
+//    startMotor(LeftWheel,110);
+//    //Lift will begin at the same time as the drive.
+//    startMotor(RightUpLift,100);
+//    startMotor(RightDownLift,100);
+//    startMotor(LeftUpLift,100);
+//    startMotor(LeftDownLift,100);
+//    wait(1.6);//**
+//    stopMotor(RightUpLift);
+//    stopMotor(RightDownLift);
+//    stopMotor(LeftDownLift);
+//    stopMotor(LeftUpLift);
+//
+//    startMotor(RightUpLift,20);
+//    startMotor(RightDownLift,20);
+//    startMotor(LeftUpLift,20);
+//    startMotor(LeftDownLift,20);
+//    //The grabber will begin at the same time at a specific moment it will stop to fully extend out.
+//    startMotor(Claw1,100);
+//    startMotor(Claw2,100);
+//    wait(0.5);
+//    stopMotor(Claw1);
+//    stopMotor(Claw2);
+//
+//    startMotor(Claw1,1);
+//    startMotor(Claw2,1);
+//    wait(0.5);
+//    stopMotor(Claw1);
+//    stopMotor(Claw2);
+//    //The drive will stop to prepare for its next movement.
+//    stopMotor(RightWheel);
+//    stopMotor(LeftWheel);
+//    //The drive will begin to retreat back for a **quarter of a second.
+//    startMotor(RightWheel,-127);
+//    startMotor(LeftWheel,-127);
+//    wait(0.25);//**
+//    stopMotor(RightWheel);
+//    stopMotor(LeftWheel);
+//    //The Lift will come down to prepare for the next movement.
+//    stopMotor(RightUpLift);
+//    stopMotor(RightDownLift);
+//    stopMotor(LeftUpLift);
+//    stopMotor(LeftDownLift);
+//    //The drive will turn to the right preparing to grab onto the cube
+//    startMotor(RightWheel,127);
+//    startMotor(LeftWheel,-127);
+//    wait(0.75);
+//    stopMotor(RightWheel);
+//    stopMotor(LeftWheel);
+//
+//    startMotor(RightWheel,127);
+//    startMotor(LeftWheel,127);
+//    wait(1);
+//    stopMotor(RightWheel);
+//    stopMotor(LeftWheel);
+//
+//		********************************************************
+//		**THIS AUTON IS INCREDIBLY OUTDATED IT WAS FOR SKYRISE**
+//		********************************************************
 //----------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
 void DonR() //1st auton. UNTESTED// by non-other than Efrain
 {
 
@@ -145,7 +211,7 @@ void DonR() //1st auton. UNTESTED// by non-other than Efrain
 // POINTS SCORED:
 //
 void Dave()
-{
+{	//Write auton here
 
 }
 
@@ -155,7 +221,7 @@ void Dave()
 // POINTS SCORED:
 //
 void Daniel()
-{
+{	//Write auton here
 
 }
 
@@ -163,11 +229,18 @@ void Ocean_Man()// I dunno man just don't use it, its a secret weapon i swear
 {
 
 }
+
 // I still believe you can be a great programmer since the beginning
 // POINTS SCORED:
 //
 void Michelle()//OMG I made Michelle her own auton section!
-{
+{	//Write auton here, let me get you started 
+	// startMotor(RightRear,100);
+	// startMotor(LeftRear,100);
+	// wait(1) // In Seconds
+	// stopMotor(RightRear)
+	// stopMotor(LeftRear)
+	//^^^^^^^^^^^^^^^^^^^^^^^^ Drives foreward I hope that helps !!!
 
 }
 
@@ -211,15 +284,14 @@ void HighHang ()// THE BICEP CURL
 		dropLiftFullSpeed();
 	}
 }
-/* Alright time for the real time, this is most important part of this robot if you, Dave or Daniel
-
-, decide to put anything in the skills section make sure you use the whole 1 minute of it.
+/*------------------------------------------------------------------------------------------------/
+Alright time for the real time, this is most important part of this robot if you, Dave or Daniel,
+decide to put anything in the skills section make sure you use the whole 1 minute of it.
 And be sure to reference your voids that were in the auton sections and to do that is easy
-
 Just type your name then follow up with a "();" and it should be ready for your program.
 GOOD LUCK. 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+------------------------------------------------------------------------------------------------*/
 void skills()// Please make this as accurate as possible and don't touch it if you aren't Efrain.
 {
 	Deploy();
