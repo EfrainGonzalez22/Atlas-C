@@ -52,6 +52,10 @@
   1/10/17 8:30am
   Efrain: I have fixed the robot to not have to use so much for the "Deploy()". That was due to me changing the intake 
   to the claw and haveing a small fork to fit in constraints. I have also made a second deploy command for a back-up. 
+  
+  1/10/17 4:30pm
+  Efrain: I updated the Team auton sections so if you're a little rusty that's okay just write an auton you see fit. I'll 
+  fix anything you might have errors in.
 
 
   */
@@ -203,6 +207,8 @@ void dropLiftFullSpeed()// Will drop the lift at full negative speed down.
 
 
 void DonR() //1st auton. UNTESTED// by non-other than Efrain
+// IM GOING TO GO CRAZY WITH MY AUTON ONCE I'M DONE WITH EVERYTHING ELSE!
+// IM TALKING CALCULUS CRAZY I KNOW HOW TO USE FLOATS, INTEGRALS, PROPORTIONS AND DERIVATIVES.
 {
 
 }
