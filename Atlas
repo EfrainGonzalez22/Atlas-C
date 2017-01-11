@@ -43,10 +43,10 @@
   so the lifts are powered by four motors but are in only two ports to provide room for the back lift and reach
   the 12 motor limit no problem.
 
-  1/9/17 6:35am
+  1/9/17  6:35am
   Efrain: I added autonomous voids for my other fellow programmers
 
-  1/9/17 7:00am
+  1/9/17  7:00am
   Efrain: Instead of having so much garbage in the user control I changed the motors into a void to keep it clean.
   
   1/10/17 8:30am
@@ -56,6 +56,9 @@
   1/10/17 4:30pm
   Efrain: I updated the Team auton sections so if you're a little rusty that's okay just write an auton you see fit. I'll 
   fix anything you might have errors in.
+  
+  1/11/17 8:00am
+  Efrain: I added the claw functions into voids under the "User Fuctions" 
 
 
   */
@@ -259,18 +262,27 @@ void Michelle()//OMG I made Michelle her own auton section!
 
 void LiftUp ()
 {
-	  motor[LeftLifts] = FULL;
-		motor[RightLifts] = FULL;
+	motor[LeftLifts] = FULL;
+	motor[RightLifts] = FULL;
 
 }
 
 void LiftDown ()
 {
-		motor[LeftLifts] = -FULL;
-		motor[RightLifts] = -FULL;
+	motor[LeftLifts] = -FULL;
+	motor[RightLifts] = -FULL;
 
 }
-
+void ClawUp ()
+{
+	motor[Claw1] = FULL;
+	motor[Claw2] = FULL;
+}
+void ClawDown ()
+{
+	motor[Claw1] = -FULL;
+	motor[Claw2] = -FULL;
+}
 
 /*************************************/
 ///////////////////////////////////////
@@ -291,12 +303,13 @@ void HighHang ()// THE BICEP CURL
 	}
 }
 /*------------------------------------------------------------------------------------------------/
+///////////////////////////////////////////////////////////////////////////////////////////////////
 Alright time for the real time, this is most important part of this robot if you, Dave or Daniel,
 decide to put anything in the skills section make sure you use the whole 1 minute of it.
 And be sure to reference your voids that were in the auton sections and to do that is easy
 Just type your name then follow up with a "();" and it should be ready for your program.
 GOOD LUCK. 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////
 ------------------------------------------------------------------------------------------------*/
 void skills()// Please make this as accurate as possible and don't touch it if you aren't Efrain.
 {
@@ -322,12 +335,12 @@ task usercontrol()
   {
 
   	{
-   motor[LeftRear] = vexRT(LEFT);
-   motor[LeftFront] = vexRT(LEFT);
-   motor[RightRear] = vexRT(RIGHT);
-   motor[RightFront] = vexRT(RIGHT);
-   }
-   if(vexRT[Btn6U] ==1)
+  	motor[LeftRear] = vexRT(LEFT);
+   	motor[LeftFront] = vexRT(LEFT);
+   	motor[RightRear] = vexRT(RIGHT);
+   	motor[RightFront] = vexRT(RIGHT);
+   	}
+   	if(vexRT[Btn6U] ==1)
 	{
 		LiftUp();
 	}
@@ -339,7 +352,22 @@ task usercontrol()
 	{
 		motor[LeftLifts] = CONTROL;
 		motor[RightLifts] = CONTROL;
+	}
 
+	if(vexRT[Btn5U] ==1);
+	{
+		ClawUp ();
+	}
+
+	else if(vexRT[Btn5D] ==1)
+	{
+		ClawDown ();
+	}
+	
+	else
+	{
+		motor[Claw1] = CONTROL;
+		motor[Claw2} = CONTROL;
 	}
 
 	HighHang();
