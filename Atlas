@@ -34,10 +34,13 @@
   int RIGHT = (Ch2);	// for the controllers.
   int SPEED = 100;  	// The Theoretically proper speed for the four wheels. IDK IDK IDK IDK maybe
 
-                       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////  // If you changed or added anything other than Values (for example motor ports, adding int values, changing IMEs, etc.
-  // MAJOR CHANGES //  // Then this would go here and please be sure to add it so nobody, Me(Efrain), gets confused
-  ///////////////////  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////// 	// If you changed or added anything other than Values (for example motor ports, adding int values, changing IMEs, etc.
+  // MAJOR CHANGES      // 	//
+  // ROBOT CODE LOGS    // 	// 
+  // Please write down  // 	//
+  // what you changed.  // 	//                 // Then this would go here and please be sure to add it so nobody, Me(Efrain), gets confused
+  //////////////////////// 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /* 1/9/17 6:00am
   Efrain: I changed the motors and sensors setup to have two lift motor controls instead of the usual four.
   so the lifts are powered by four motors but are in only two ports to provide room for the back lift and reach
@@ -62,9 +65,7 @@
   
   1/12-13/17
   Efrain: There was a major change in the bot but for the most part it was kept similar the build team added a more simpler 
-  
   way to drop the lift of the fork. The claws were rebuilt to keep direction with the lift. There will need to be a high hang
-  
   issue without something hindering the lift. 
   */
 void pre_auton()
